@@ -62,25 +62,22 @@ app.post("/api/contact", async (req, res) => {
 });
 
 // Serve static files from dist/public in production/local
-// Only applied if NOT running on Vercel
-if (!process.env.VERCEL) {
-  const staticPath =
-    process.env.NODE_ENV === "production"
-      ? path.resolve(__dirname, "public") // When built to dist
-      : path.resolve(__dirname, "..", "dist", "public");
+const staticPath =
+  process.env.NODE_ENV === "production"
+    ? path.resolve(__dirname, "public") // When built to dist
+    : path.resolve(__dirname, "..", "dist", "public");
 
-  app.use(express.static(staticPath));
+app.use(express.static(staticPath));
 
-  // Handle client-side routing - serve index.html for all routes
-  app.get("*", (_req, res) => {
-    res.sendFile(path.join(staticPath, "index.html"));
-  });
+// Handle client-side routing - serve index.html for all routes
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(staticPath, "index.html"));
+});
 
-  const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-  server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
-  });
-}
+server.listen(port, "0.0.0.0", () => {
+  console.log(`Server running on http://0.0.0.0:${port}/`);
+});
 
 export default app;
