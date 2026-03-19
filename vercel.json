@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "public": false,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "envPrefix": "NEXT_PUBLIC_",
+  "functions": {
+    "server/index.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/dist/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/public/$1",
+      "check": true
+    },
+    {
+      "src": "/(?!api)",
+      "dest": "/dist/public/index.html"
+    }
+  ]
+}
