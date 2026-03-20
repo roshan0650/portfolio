@@ -43,7 +43,17 @@ export default function Contact() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        let errorMessage = 'Failed to send message';
+        try {
+          const errorData = await response.json();
+          if (errorData.error) {
+            errorMessage = errorData.error;
+          }
+        } catch (e) {
+          // If response isn't JSON, fallback to status text
+          errorMessage = `Server Error: ${response.statusText}`;
+        }
+        throw new Error(errorMessage);
       }
 
       setSubmitted(true);
@@ -51,8 +61,8 @@ export default function Contact() {
         setFormData({ name: '', email: '', message: '' });
         setSubmitted(false);
       }, 3000);
-    } catch (err) {
-      setError('Failed to send message. Please try again.');
+    } catch (err: any) {
+      setError(err.message || 'Failed to send message. Please try again.');
       console.error('Form submission error:', err);
     } finally {
       setLoading(false);
