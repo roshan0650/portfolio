@@ -37,6 +37,11 @@ app.post("/api/contact", async (req, res) => {
       return res.status(400).json({ error: "All fields are required" });
     }
 
+    if (!process.env.GMAIL_PASSWORD) {
+      console.error("Vercel Configuration Error: GMAIL_PASSWORD is not set in Environment Variables!");
+      return res.status(500).json({ error: "Server missing email credentials. Please check Vercel environment variables." });
+    }
+
     // Send email
     await transporter.sendMail({
       from: process.env.GMAIL_USER || "roshan00179@gmail.com",
