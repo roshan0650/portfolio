@@ -25,7 +25,7 @@ export default function Hero() {
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center pt-20 pb-20 overflow-hidden bg-cover bg-center"
-      style={{backgroundImage: "url('/background.jpeg')"}}
+      style={{ backgroundImage: "url('/chrome.jpeg')" }}
     >
       {/* Overlays for text readability */}
       <div className="absolute inset-0 -z-10 bg-black/5" />
@@ -35,11 +35,10 @@ export default function Hero() {
         <div className="text-center space-y-8">
           {/* Main heading with staggered animation */}
           <div
-            className={`transition-all duration-700 ease-out ${
-              isLoaded
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-8'
-            }`}
+            className={`transition-all duration-700 ease-out ${isLoaded
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-8'
+              }`}
           >
             <h1 className="font-serif-display text-5xl md:text-7xl lg:text-8xl">
               Roshan
@@ -48,11 +47,10 @@ export default function Hero() {
 
           {/* Role with delay */}
           <div
-            className={`transition-all duration-700 ease-out ${
-              isLoaded
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-8'
-            }`}
+            className={`transition-all duration-700 ease-out ${isLoaded
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-8'
+              }`}
             style={{
               transitionDelay: isLoaded ? '100ms' : '0ms',
             }}
@@ -64,11 +62,10 @@ export default function Hero() {
 
           {/* Tagline with delay */}
           <div
-            className={`transition-all duration-700 ease-out ${
-              isLoaded
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-8'
-            }`}
+            className={`transition-all duration-700 ease-out ${isLoaded
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-8'
+              }`}
             style={{
               transitionDelay: isLoaded ? '200ms' : '0ms',
             }}
@@ -82,11 +79,10 @@ export default function Hero() {
 
           {/* CTA Buttons with delay */}
           <div
-            className={`transition-all duration-700 ease-out pt-4 ${
-              isLoaded
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-8'
-            }`}
+            className={`transition-all duration-700 ease-out pt-4 ${isLoaded
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-8'
+              }`}
             style={{
               transitionDelay: isLoaded ? '300ms' : '0ms',
             }}

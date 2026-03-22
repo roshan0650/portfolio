@@ -60,9 +60,9 @@ app.post("/api/contact", async (req, res) => {
     });
 
     res.json({ success: true, message: "Email sent successfully" });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Email sending error:", error);
-    res.status(500).json({ error: "Failed to send email" });
+    res.status(500).json({ error: error.message || "Failed to send email" });
   }
 });
 
